@@ -21,10 +21,10 @@ describe("Accomodation Type Endpoints", () => {
     await clearTestDB();
   });
 
-  // test POST /accomodation-types endpoint
-  describe("POST /accomodation-types", () => {
+  // test POST /accommodation-types endpoint
+  describe("POST /accommodation-types", () => {
     it("should create a new accomodation type", async () => {
-      const res = await request(app).post("/accomodation-types").send({
+      const res = await request(app).post("/accommodation-types").send({
         name: "Sample Accomodation Type",
         description: "Sample accomodation type description",
       });
@@ -43,7 +43,7 @@ describe("Accomodation Type Endpoints", () => {
         description: "Sample accomodation type description",
       }).save();
 
-      const res = await request(app).post("/accomodation-types").send({
+      const res = await request(app).post("/accommodation-types").send({
         name: "Sample Accomodation Type",
         description: "Sample accomodation type description",
       });
@@ -53,8 +53,8 @@ describe("Accomodation Type Endpoints", () => {
     });
   });
 
-  // test GET /accomodation-types endpoint
-  describe("GET /accomodation-types", () => {
+  // test GET /accommodation-types endpoint
+  describe("GET /accommodation-types", () => {
     it("should fetch all accomodation types", async () => {
       await new AccomodationType({
         name: "Sample Accomodation Type",
@@ -65,15 +65,15 @@ describe("Accomodation Type Endpoints", () => {
         description: "Sample accomodation type 2 description",
       }).save();
 
-      const res = await request(app).get("/accomodation-types");
+      const res = await request(app).get("/accommodation-types");
 
       expect(res.status).to.equal(200);
       expect(res.body.length).to.equal(2);
     });
   });
 
-  // test GET /accomodation-types/:id endpoint
-  describe("GET /accomodation-types/:id", () => {
+  // test GET /accommodation-types/:id endpoint
+  describe("GET /accommodation-types/:id", () => {
     it("should fetch a accomodation type by ID", async () => {
       const accomodationType = await new AccomodationType({
         name: "Sample Accomodation Type",
@@ -81,7 +81,7 @@ describe("Accomodation Type Endpoints", () => {
       }).save();
 
       const res = await request(app).get(
-        `/accomodation-types/${accomodationType._id}`
+        `/accommodation-types/${accomodationType._id}`
       );
 
       expect(res.status).to.equal(200);
@@ -95,7 +95,7 @@ describe("Accomodation Type Endpoints", () => {
     it("should return 404 if accomodation type not found", async () => {
       const nonExistentAccomodationTypeId = new mongoose.Types.ObjectId();
       const res = await request(app).get(
-        `/accomodation-types/${nonExistentAccomodationTypeId}`
+        `/accommodation-types/${nonExistentAccomodationTypeId}`
       );
 
       expect(res.status).to.equal(404);
@@ -106,8 +106,8 @@ describe("Accomodation Type Endpoints", () => {
     });
   });
 
-  // test PATCH /accomodation-types/:id endpoint
-  describe("PATCH /accomodation-types/:id", () => {
+  // test PATCH /accommodation-types/:id endpoint
+  describe("PATCH /accommodation-types/:id", () => {
     it("should update a accomodation type", async () => {
       const accomodationType = await new AccomodationType({
         name: "Sample Accomodation Type",
@@ -115,7 +115,7 @@ describe("Accomodation Type Endpoints", () => {
       }).save();
 
       const res = await request(app)
-        .patch(`/accomodation-types/${accomodationType._id}`)
+        .patch(`/accommodation-types/${accomodationType._id}`)
         .send({ description: "Sample accomodation type updated description" });
 
       expect(res.status).to.equal(200);
@@ -128,7 +128,7 @@ describe("Accomodation Type Endpoints", () => {
     it("should return 404 if accomodation type not found", async () => {
       const nonExistentAccomodationTypeId = new mongoose.Types.ObjectId();
       const res = await request(app)
-        .patch(`/accomodation-types/${nonExistentAccomodationTypeId}`)
+        .patch(`/accommodation-types/${nonExistentAccomodationTypeId}`)
         .send({ description: "Sample accomodation type updated description" });
 
       expect(res.status).to.equal(404);
@@ -139,8 +139,8 @@ describe("Accomodation Type Endpoints", () => {
     });
   });
 
-  // test DELETE /accomodation-types/:id endpoint
-  describe("DELETE /accomodation-types/:id", () => {
+  // test DELETE /accommodation-types/:id endpoint
+  describe("DELETE /accommodation-types/:id", () => {
     it("should delete a accomodation type", async () => {
       const accomodationType = await new AccomodationType({
         name: "Sample Accomodation Type",
@@ -148,7 +148,7 @@ describe("Accomodation Type Endpoints", () => {
       }).save();
 
       const res = await request(app).delete(
-        `/accomodation-types/${accomodationType._id}`
+        `/accommodation-types/${accomodationType._id}`
       );
 
       expect(res.status).to.equal(200);
@@ -166,7 +166,7 @@ describe("Accomodation Type Endpoints", () => {
     it("should return 404 if accomodation type not found", async () => {
       const nonExistentAccomodationTypeId = new mongoose.Types.ObjectId();
       const res = await request(app).delete(
-        `/accomodation-types/${nonExistentAccomodationTypeId}`
+        `/accommodation-types/${nonExistentAccomodationTypeId}`
       );
 
       expect(res.status).to.equal(404);

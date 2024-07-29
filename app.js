@@ -38,8 +38,8 @@ mongoose
 
 // routes
 app.use("/", indexRouter);
-app.use("/accomodations", accomodationRouter);
-app.use("/accomodation-types", accomodationTypeRouter);
+app.use("/accommodations", accomodationRouter);
+app.use("/accommodation-types", accomodationTypeRouter);
 app.use("/amenities", amenityRouter);
 
 module.exports = app;
