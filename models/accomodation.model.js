@@ -93,6 +93,7 @@ const accommodationSchema = new Schema(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     type: {
       type: Schema.Types.ObjectId,
