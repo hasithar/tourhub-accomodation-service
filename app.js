@@ -29,6 +29,13 @@ const dbName =
     ? process.env.dbProduction
     : process.env.dbDevelopment;
 
+console.log("🚀 ~ process.env.:", process.env.dbTesting);
+console.log("🚀 ~ process.env.:", process.env.dbProduction);
+console.log("🚀 ~ process.env.:", process.env.dbProduction);
+console.log("🚀 ~ process.env.:", process.env.NODE_ENV);
+console.log("🚀 ~ process.env.:", process.env.connectionString);
+console.log("🚀 ~ process.env.:", process.env.appName);
+
 mongoose
   .connect(
     `mongodb+srv://${process.env.connectionString}/${dbName}?retryWrites=true&w=majority&appName=${process.env.appName}`
