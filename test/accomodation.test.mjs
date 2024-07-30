@@ -37,6 +37,23 @@ describe("Accomodation Endpoints", () => {
         "Sample accomodation description"
       );
     });
+
+    it("should not create a accomodation with an existing name", async () => {
+      await new Accomodation({
+        name: "Sample accomodation name",
+        type: new mongoose.Types.ObjectId(),
+        description: "Sample accomodation description",
+      }).save();
+
+      const res = await request(app).post("/accommodations").send({
+        name: "Sample accomodation name",
+        type: new mongoose.Types.ObjectId(),
+        description: "Sample accomodation description",
+      });
+
+      expect(res.status).to.equal(500);
+      expect(res.body).to.have.property("message");
+    });
   });
 
   // test GET /accommodations endpoint

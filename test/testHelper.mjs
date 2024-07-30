@@ -12,9 +12,9 @@ const __dirname = dirname(__filename);
 dotenv.config({ path: join(__dirname, "./../../../.env") });
 
 export const connectTestDB = async () => {
-  const dbName = process.env.dbTesting;
-  const connectionString = `mongodb+srv://${process.env.connectionString}/${dbName}?retryWrites=true&w=majority&appName=${process.env.appName}`;
-  await mongoose.connect(connectionString);
+  const dbName = process.env.DB_TESTING;
+  const DB_CONNECTION_STRING = `mongodb+srv://${process.env.DB_CONNECTION_STRING}/${dbName}?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`;
+  await mongoose.connect(DB_CONNECTION_STRING);
 };
 
 export const closeTestDB = async () => {
